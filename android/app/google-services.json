@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "935165413233",
+    "firebase_url": "https://responding-io-6fa8e.firebaseio.com",
+    "project_id": "responding-io-6fa8e",
+    "storage_bucket": "responding-io-6fa8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935165413233:android:95b15837e1b65abb",
+        "android_client_info": {
+          "package_name": "com.respondingio.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCgrgYghhCUhcbgJx8jStfv3iYNOA6lI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "935165413233-rm12ko94hnbl0agh4m29sqafbqgbghvf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.whosenroute.Responding-io"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935165413233:android:7dd2f66717d56b29",
+        "android_client_info": {
+          "package_name": "com.respondingio.apparatus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCgrgYghhCUhcbgJx8jStfv3iYNOA6lI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "935165413233-rm12ko94hnbl0agh4m29sqafbqgbghvf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.whosenroute.Responding-io"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935165413233:android:af61ddad6327b9fe",
+        "android_client_info": {
+          "package_name": "com.respondingio.main"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCgrgYghhCUhcbgJx8jStfv3iYNOA6lI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "935165413233-rm12ko94hnbl0agh4m29sqafbqgbghvf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.whosenroute.Responding-io"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935165413233:android:9ca657950de03dc3d018d0",
+        "android_client_info": {
+          "package_name": "com.whosenroute.respondingio_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCgrgYghhCUhcbgJx8jStfv3iYNOA6lI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935165413233-tbpjs9tdscduuv3nii57u0ji2ljs2pf5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "935165413233-rm12ko94hnbl0agh4m29sqafbqgbghvf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.whosenroute.Responding-io"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

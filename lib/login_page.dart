@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tinycolor/tinycolor.dart';
 import 'authentication.dart';
 
 class LoginPage extends StatefulWidget {
@@ -91,8 +92,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Responding.io Login"),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.red[400] : TinyColor.fromString("#1f1f1f").color,
+        title: Image(
+            image: new ExactAssetImage(Theme.of(context).brightness == Brightness.light ? "assets/responding_icon_black.png" : "assets/respondingio_logo_light.png"),
+            height: 100.0,
+            width: 200.0,
+            alignment: FractionalOffset.center),
       ),
       body: new Stack(
         children: <Widget>[

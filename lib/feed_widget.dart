@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +9,7 @@ import 'package:respondingio_flutter/utils/AgencyUtils.dart';
 import 'package:respondingio_flutter/utils/RespondingUtils.dart';
 import 'package:respondingio_flutter/widgets/PositionWidget.dart';
 import 'package:tinycolor/tinycolor.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 import 'models/Position.dart';
 
@@ -73,37 +75,65 @@ class _FeedWidget extends State<FeedWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Container(
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 16.0, top: 10.0, bottom: 10, right: 16.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                event.data[index].stationNumber,
-                                style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Colors.black)),
-                              ),
-                              Expanded(
-                                child: Padding(
+                      GestureDetector(
+                        child: Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 16.0, top: 10.0, bottom: 10, right: 16.0),
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  event.data[index].stationNumber,
+                                  style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Colors.black)),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    child: Text(
+                                      event.data[index].agencyName.toUpperCase(),
+                                      style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: Colors.black)),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    padding: EdgeInsets.only(left: 16.0),
+                                  ),
+                                ),
+                                Padding(
                                   child: Text(
-                                    event.data[index].agencyName.toUpperCase(),
-                                    style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: Colors.black)),
+                                    "",
+                                    style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black)),
                                     textAlign: TextAlign.left,
                                   ),
-                                  padding: EdgeInsets.only(left: 16.0),
+                                  padding: EdgeInsets.only(left: 24.0),
                                 ),
-                              ),
-                              Padding(
-                                child: Text(
-                                  "",
-                                  style: GoogleFonts.roboto(textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black)),
-                                  textAlign: TextAlign.left,
-                                ),
-                                padding: EdgeInsets.only(left: 24.0),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          color: Colors.orange[400],
                         ),
-                        color: Colors.orange[400],
+                        onTap: () {
+                          /*showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  contentPadding: EdgeInsets.only(top: 8, bottom: 8),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      InkWell(
+                                        child: ListTile(
+                                          title: Text('Dashboard'),
+                                        ),
+                                        onTap: () {},
+                                      ),
+                                      InkWell(
+                                        child: ListTile(
+                                          title: Text('Dashboard'),
+                                        ),
+                                        onTap: () {},
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });*/
+                        },
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -215,5 +245,26 @@ class _FeedWidget extends State<FeedWidget> {
         ))
       ],
     );
+  }
+
+  Widget setupAlertDialoadContainer() {
+    return Column (
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          constraints: BoxConstraints(maxHeight: 50, maxWidth: 50),
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text('Gujarat, India'),
+              );
+            },
+          ),
+        )
+      ],
+    );
+
   }
 }

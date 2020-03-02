@@ -7,6 +7,7 @@ import 'package:tinycolor/tinycolor.dart';
 import 'login_page.dart';
 import 'authentication.dart';
 import 'main.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 enum AuthStatus {
   NOT_DETERMINED,
@@ -33,6 +34,11 @@ class _RootPageState extends State<RootPage> {
     FirebaseDatabase database = FirebaseDatabase.instance;
     database.setPersistenceEnabled(true);
     FirebaseDatabase(databaseURL: 'https://responding-io-agency.firebaseio.com/').setPersistenceEnabled(true);
+
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(
+            sound: true, badge: true, alert: true, provisional: true));
 
     widget.auth.getCurrentUser().then((user) {
       setState(() {
@@ -90,7 +96,7 @@ class _RootPageState extends State<RootPage> {
           return new HomePage(
             title: "Responding.io",
             auth: widget.auth,
-            logoutCallback: logoutCallback,
+            logout: logoutCallback,
           );
         } else
           return buildWaitingScreen();

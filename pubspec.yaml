@@ -44,6 +44,10 @@ dependencies:
 
   tinycolor: ^1.0.2
 
+  styled_widget: ^0.1.2+1
+
+  firebase_messaging: ^6.0.12
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:respondingio_flutter/models/AgencyFS.dart';
 import 'package:respondingio_flutter/models/Position.dart';
 import 'package:respondingio_flutter/utils/IncidentUtils.dart';
@@ -25,12 +27,15 @@ class AgencyUtils {
   StreamController<List<AgencyFS>> controller = BehaviorSubject();
   List<AgencyFS> list = List<AgencyFS>();
 
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   void loadUserAgencies(String uid) {
     agencyIDs.clear();
     agencies.clear();
     FirebaseDatabase.instance.reference().child("users/$uid/agencies").onChildAdded.listen((Event event) {
       agencyIDs.add(event.snapshot.key);
       loadAgencyPositions(event.snapshot.key);
+      agencyLoaded(event.snapshot.key);
       Firestore.instance.collection("agencies").document(event.snapshot.key).get().then((DocumentSnapshot snapshot) {
         AgencyFS agency = AgencyFS.fromSnapshot(snapshot);
         agencies.add(agency);
@@ -54,6 +59,18 @@ class AgencyUtils {
       //RespondingUtils().loadAgencyResponding(uid);
       IncidentUtils().loadActiveIncidents();
     });
+  }
+
+  void agencyLoaded(String agencyID) {
+    if (!kReleaseMode) {
+      //Subscribe to test topics.
+      _firebaseMessaging.subscribeToTopic("test-1");
+      _firebaseMessaging.subscribeToTopic("test-$agencyID");
+    } else {
+      _firebaseMessaging.unsubscribeFromTopic("test-1");
+      _firebaseMessaging.unsubscribeFromTopic("test-$agencyID");
+      _firebaseMessaging.subscribeToTopic("$agencyID");
+    }
   }
 
   void loadAgencyPositions(String agencyID) {

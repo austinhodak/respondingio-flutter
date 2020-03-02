@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Responding.io',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
         // This is the theme of your application.

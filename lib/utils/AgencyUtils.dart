@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -64,11 +65,11 @@ class AgencyUtils {
   void agencyLoaded(String agencyID) {
     if (!kReleaseMode) {
       //Subscribe to test topics.
-      _firebaseMessaging.subscribeToTopic("test-1");
-      _firebaseMessaging.subscribeToTopic("test-$agencyID");
+      _firebaseMessaging.subscribeToTopic("DEBUG");
+      _firebaseMessaging.subscribeToTopic("$agencyID-DEBUG");
     } else {
-      _firebaseMessaging.unsubscribeFromTopic("test-1");
-      _firebaseMessaging.unsubscribeFromTopic("test-$agencyID");
+      _firebaseMessaging.unsubscribeFromTopic("DEBUG");
+      _firebaseMessaging.unsubscribeFromTopic("$agencyID-DEBUG");
       _firebaseMessaging.subscribeToTopic("$agencyID");
     }
   }

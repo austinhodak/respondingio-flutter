@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tinycolor/tinycolor.dart';
 import 'authentication.dart';
+import 'package:styled_widget/styled_widget.dart';
+import 'package:package_info/package_info.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({this.auth, this.loginCallback});
@@ -18,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   String _email;
   String _password;
   String _errorMessage;
+  String version = "";
 
   bool _isLoginForm;
   bool _isLoading;
@@ -69,11 +72,19 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<void> _initPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      version = info.version;
+    });
+  }
+
   @override
   void initState() {
     _errorMessage = "";
     _isLoading = false;
     _isLoginForm = true;
+    _initPackageInfo();
     super.initState();
   }
 
@@ -102,14 +113,22 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: new Stack(
         children: <Widget>[
-          Column (
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _showForm(),
-            ],
+            children: <Widget>[_showForm()],
           ),
           showCircularProgress(),
+          Positioned(
+            child: SafeArea(
+              child: Text(
+                "v$version"
+              ).textAlignment(TextAlign.center),
+            ),
+            bottom: 0.0,
+            right: 0.0,
+            left: 0.0,
+          )
         ],
       ),
     );

@@ -36,13 +36,21 @@ class _HomePageState extends State<HomePage> {
     widget.auth.getCurrentUser().then((user) {
       FirebaseDatabase.instance.reference().child("users").child(user.uid).onValue.listen((Event event) {
         setState(() {
-          if (event.snapshot.value["responding"] == null) {
+          _fabIcon = ImageIcon(AssetImage("assets/icons8_steering_wheel_100.png"));
+
+          /*if (event.snapshot.value["responding"] == null) {
             isResponding = false;
             _fabIcon = ImageIcon(AssetImage("assets/icons8_steering_wheel_100.png"));
           } else {
-            isResponding = true;
-            _fabIcon = ImageIcon(AssetImage("assets/icons8_place_marker_96.png"));
-          }
+            if (event.snapshot.value["respondingToType"] == "UNAVAILABLE") {
+              isResponding = false;
+              _fabIcon = ImageIcon(AssetImage("assets/icons8_steering_wheel_100.png"));
+            } else {
+              isResponding = true;
+              _fabIcon = ImageIcon(AssetImage("assets/icons8_place_marker_96.png"));
+            }
+
+          }*/
         });
       });
     });
@@ -98,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           FABBottomAppBarItem(iconData: 'assets/feed_1.png', text: 'This', disabled: false),
           FABBottomAppBarItem(iconData: 'assets/icons8_fire_alarm_100.png', text: 'Is', disabled: false),
           FABBottomAppBarItem(iconData: 'assets/fire_truck_1.png', text: 'Bottom', disabled: true),
-          FABBottomAppBarItem(iconData: 'assets/icons8_more_100.png', text: 'Bar', disabled: false),
+          FABBottomAppBarItem(iconData: 'assets/icons8_more_100.png', text: 'Bar', disabled: true),
         ],
       ),
       body: _children[_lastSelected],

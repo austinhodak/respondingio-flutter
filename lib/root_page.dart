@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:respondingio_flutter/home_page.dart';
@@ -35,16 +36,17 @@ class _RootPageState extends State<RootPage> {
     database.setPersistenceEnabled(true);
     FirebaseDatabase(databaseURL: 'https://responding-io-agency.firebaseio.com/').setPersistenceEnabled(true);
 
+    Firestore.instance.settings(
+      persistenceEnabled: true
+    );
+
     final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-            sound: true, badge: true, alert: true, provisional: true));
+    _firebaseMessaging.requestNotificationPermissions();
 
     widget.auth.getCurrentUser().then((user) {
       setState(() {
         if (user != null) {
           _userId = user?.uid;
-
           AgencyUtils().loadUserAgencies(user?.uid);
         }
         authStatus = user?.uid == null ? AuthStatus.NOT_LOGGED_IN : AuthStatus.LOGGED_IN;
@@ -56,6 +58,7 @@ class _RootPageState extends State<RootPage> {
     widget.auth.getCurrentUser().then((user) {
       setState(() {
         _userId = user.uid.toString();
+        AgencyUtils().loadUserAgencies(user?.uid);
       });
     });
     setState(() {

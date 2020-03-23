@@ -5,6 +5,7 @@ import 'package:respondingio_flutter/home_page.dart';
 import 'package:respondingio_flutter/utils/AgencyUtils.dart';
 import 'package:respondingio_flutter/utils/RespondingUtils.dart';
 import 'package:tinycolor/tinycolor.dart';
+import 'drawer_page.dart';
 import 'login_page.dart';
 import 'authentication.dart';
 import 'main.dart';
@@ -96,7 +97,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage(
+          return new DrawerPage(
             title: "Responding.io",
             auth: widget.auth,
             logout: logoutCallback,

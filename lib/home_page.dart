@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:respondingio_flutter/apparatus_home_page.dart';
 import 'package:respondingio_flutter/feed_widget.dart';
 import 'package:respondingio_flutter/home_more_page.dart';
 import 'package:respondingio_flutter/incidents/home_incidents.dart';
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  final List<Widget> _children = [FeedWidget(), HomeIncidents(), FeedWidget(), HomeMorePage(loggedOut: loggedOut,)];
+  final List<Widget> _children = [FeedWidget(), HomeIncidents(), ApparatusHomePage(), HomeMorePage(loggedOut: loggedOut,)];
 
   @override
   Widget build(BuildContext context) {
@@ -97,70 +98,12 @@ class _HomePageState extends State<HomePage> {
         items: [
           FABBottomAppBarItem(iconData: 'assets/feed_1.png', text: 'This', disabled: false),
           FABBottomAppBarItem(iconData: 'assets/icons8_fire_alarm_100.png', text: 'Is', disabled: false),
-          FABBottomAppBarItem(iconData: 'assets/fire_truck_1.png', text: 'Bottom', disabled: true),
+          FABBottomAppBarItem(iconData: 'assets/fire_truck_1.png', text: 'Bottom', disabled: false),
           FABBottomAppBarItem(iconData: 'assets/icons8_more_100.png', text: 'Bar', disabled: true),
         ],
       ),
       body: _children[_lastSelected],
     );
-  }
-
-  Widget getDrawer() {
-    //return null;
-    return Drawer(
-        child: Column(
-      children: <Widget>[
-        Expanded(
-          child: ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              ListTile(
-                title: Text(
-                  "Austin Hodak",
-                  style: TextStyle(fontSize: 22),
-                ),
-                subtitle: Text("ahodak65@gmail.com"),
-              ),
-              ClipRRect(
-                  clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(5),
-                  child: Container(
-                    decoration: BoxDecoration(shape: BoxShape.rectangle, color: Color.fromRGBO(244, 67, 54, 0.1)),
-                    alignment: Alignment.topCenter,
-                    child: ListTile(
-                      dense: true,
-                      leading: Image.asset(
-                        "assets/icons8_fire_station_96.png",
-                        height: 24,
-                      ),
-                      title: Text('Dashboard').textColor(Colors.red).fontSize(14),
-                      selected: true,
-                    ),
-                  )).padding(left: 8, right: 8),
-            ],
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(bottom: 24),
-          decoration: BoxDecoration(
-              boxShadow: <BoxShadow>[BoxShadow(color: Colors.black54, blurRadius: 3.0, offset: Offset(0.0, 0))],
-              color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.grey[850]),
-          child: Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              child: ListTile(
-                dense: true,
-                leading: Image.asset(
-                  "assets/icons8_settings.png",
-                  height: 24,
-                ),
-                title: Text('Settings').fontSize(14),
-              ),
-            ),
-          ),
-        )
-      ],
-    ));
   }
 
   void _settingModalBottomSheet(context) {
@@ -177,7 +120,7 @@ class _HomePageState extends State<HomePage> {
       for (AgencyFS agency in AgencyUtils().agencies) {
         widgets.add(RadioListTile<AgencyFS>(
           dense: false,
-          title: Text("${agency.agencyShortName}").fontSize(16),
+          title: Text("${agency.agencyShortName}").fontSize(15),
           activeColor: Colors.red,
           value: agency,
           groupValue: selectedAgency,
@@ -199,7 +142,7 @@ class _HomePageState extends State<HomePage> {
       List<Widget> widgets = new List<Widget>();
       for (ResponseOption option in selectedAgency.responseOptions) {
         widgets.add(RadioListTile<ResponseOption>(
-          title: Text("${option.name}").fontSize(16),
+          title: Text("${option.name}").fontSize(15),
           activeColor: Colors.red,
           value: option,
           dense: true,
@@ -290,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ).padding(left: 24, top: 12),
                   Padding(
-                    padding: EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+                    padding: EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0, bottom: 12),
                     child: ClipRRect(
                         clipBehavior: Clip.antiAlias,
                         borderRadius: BorderRadius.circular(20),
